@@ -19,22 +19,24 @@ Nullam mollis pharetra lectus. Duis blandit libero ac ante rhoncus feugiat. Maur
     }
   },
   methods: {
+    replaceLetter(position, letter) {
+      const beginning = this.text.slice(0, position);
+      const ending = this.text.slice(position + 1);
+      this.text = beginning + letter + ending;
+    },
     rain() {
-      const divider = Math.floor(Math.random() * this.text.length);
-      const letter = this.replacement.charAt(divider % this.replacement.length);
-      const beginning = this.text.slice(0, divider);
-      const ending = this.text.slice(divider + 1);
-      this.text = beginning + letter + ending
+      const position = Math.floor(Math.random() * this.text.length);
+      const letter = this.replacement.charAt(position % this.replacement.length);
+      if (letter != this.text.charAt(position))
+        this.replaceLetter(position, letter);
     },
     tide() {
-      let divider = null, letter = null;
+      let position = null, letter = null;
       do {
-        divider = this.tideLevel++;
-        letter = this.replacement.charAt(divider % this.replacement.length);
-      } while (letter == this.text.charAt(divider))
-      const beginning = this.text.slice(0, divider);
-      const ending = this.text.slice(divider + 1);
-      this.text = beginning + letter + ending
+        position = this.tideLevel++;
+        letter = this.replacement.charAt(position % this.replacement.length);
+      } while (letter == this.text.charAt(position));
+      this.replaceLetter(position, letter);
     }
   },
   mounted() {
