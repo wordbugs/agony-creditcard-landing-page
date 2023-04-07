@@ -1,15 +1,100 @@
 @import url('https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap');
 
+* {
+  font-family: inherit;
+  font-size: inherit;
+}
+
 body {
   background-color: #222;
   color: #ddd;
   font-family: "Fragment Mono", monospace;
   white-space: pre-wrap;
-  font-size: 18px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='20px' width='62px'><text x='0' y='15' fill='rgba(255,0,0,0.2)' font-size='22' font-family='Fragment Mono, monospace'>pain </text></svg>");
+  animation: background-animation 2s linear infinite;
+  background-repeat: repeat;
 }
 
 main {
   margin: 0px auto;
   width: 50%;
-  font-size: 1em;
+  font-size: 20px;
+  white-space: pre-wrap;
+  word-break: break-all;
+
+}
+
+/*
+.scroll-spinner {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: rotate(0deg);
+  animation: full-rotation 1s linear infinite;
+  animation-play-state: paused;
+  animation-delay: calc(var(--scroll) * 1s);
+}
+
+@keyframes full-rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}*/
+
+@keyframes background-animation {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+#chat {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  max-width: 50%;
+  max-height: 50%;
+  width: 20em;
+  padding: 1em;
+  background-color: #411;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='20px' width='62px'><text x='0' y='15' fill='rgba(60,0,0,1)' font-size='22' font-family='Fragment Mono, monospace'>pain </text></svg>");
+  animation: background-animation 2s linear infinite;
+}
+
+h2 {
+  color: #888;
+  text-align: center;
+  margin: 4px;
+}
+
+.username.staff {
+  color: #b44;
+}
+.username.user {
+  color: #888;
+}
+
+input#chat-box {
+  background-color: #222;
+  color: #ddd;
+  border: 2px solid #bbb;
+}
+
+button#button-send {
+  background: #bbb;
+  border: 2px solid #222;
+}
+
+button#button-close-chat {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  border: none;
+  background-color: #fbb;
+  color: #444;
 }

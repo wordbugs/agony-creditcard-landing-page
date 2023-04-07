@@ -21,6 +21,18 @@
     <script src="stuff.js" defer></script>
   </head>
   <body>
-    <main id="app">{{ text }}</main>
+    <main id="app">
+      <section id="text">{{ text }}</section>
+      <section id="chat">
+        <h2>Chat with our staff!</h2>
+        <div v-for="message in visibleChatMessages">
+          <span :class="['username', { staff: message.source == 'staff', user: message.source == 'user' }]">{{ message.source }}</span>:
+          {{ message.text }}
+        </div>
+        <input type="text" id="chat-box" v-model="userText" @keyup.enter="enterMessage">
+        <button id="button-send" @click="enterMessage">SEND</button>
+        <button id="button-close-chat" @click="tryToCloseChat">x</button>
+      </section>
+    </main>
   </body>
 </html>
