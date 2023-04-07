@@ -17,11 +17,10 @@ body {
 
 main {
   margin: 0px auto;
-  width: 50%;
+  width: min(90%, 20em);
   font-size: 20px;
   white-space: pre-wrap;
   word-break: break-all;
-
 }
 
 /*
